@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css"/>
+    <title>Document</title>
+    <script src="./scripts/writer.js"></script>
+</head>
+<body>
+    
+    <textarea name="text" id="textInput" cols="30" rows="10" placeholder="Type text here"></textarea>
+    <input type="range" name="speed" id="wps" oninput="readInterval()" min=0.1 max=5.0 step = 0.1 />
+    <button onclick="startReading()">Start</button>
+    <button onclick="stopReading()">Stop</button>
+
+    <div id="displayContainer"><div id="crosshair"></div><div id="display"></div></div>
+
+
+</body>
+</html>
