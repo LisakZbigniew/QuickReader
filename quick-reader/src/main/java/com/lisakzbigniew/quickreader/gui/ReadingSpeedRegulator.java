@@ -1,26 +1,28 @@
 package com.lisakzbigniew.quickreader.gui;
 
 import javax.swing.JSlider;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class ReadingSpeedRegulator extends JSlider implements ChangeListener{
+public class ReadingSpeedRegulator extends JSlider{
     
     QuickReaderFrame parentQR;
     
     public ReadingSpeedRegulator(){
-        super(60,180,120);
+        super(60,300,180);
         
         setPaintLabels(true);
         setPaintTicks(true);
 
-        setMajorTickSpacing(30);
-        setMinorTickSpacing(3);
+        setMajorTickSpacing(60);
+        setMinorTickSpacing(6);
 
-        addChangeListener(this);
+        addChangeListener((e) -> {
+            if(parentQR != null){
+                parentQR.speedChanged(getIntervalBetweenWords());
+            }
+        });
 
     }
 
@@ -34,15 +36,6 @@ public class ReadingSpeedRegulator extends JSlider implements ChangeListener{
 
     public void setparentQR(QuickReaderFrame parentQR) {
         this.parentQR = parentQR;
-    }
-
-    @Override
-    public void stateChanged(ChangeEvent e) {
-        
-        if(parentQR != null){
-            parentQR.speedChanged(getIntervalBetweenWords());
-        }
-        
     }
 
 }

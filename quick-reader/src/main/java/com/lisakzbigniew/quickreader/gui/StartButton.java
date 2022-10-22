@@ -11,6 +11,11 @@ public class StartButton extends JButton{
 
     public StartButton(){
         super("Start");
+        addActionListener((e) -> {
+            if(parentQR != null){
+                parentQR.startReading();
+            }
+        });
     }
 
     public QuickReaderFrame getparentQR() {
@@ -20,5 +25,7 @@ public class StartButton extends JButton{
     public void setparentQR(QuickReaderFrame parentQR) {
         this.parentQR = parentQR;
     }
+
+    
 
 }
